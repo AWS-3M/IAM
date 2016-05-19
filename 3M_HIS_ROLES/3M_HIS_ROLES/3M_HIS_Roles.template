@@ -1,0 +1,269 @@
+{
+    "AWSTemplateFormatVersion" : "2010-09-09",
+    "Description"              : "Used to Create the Roles and Policies Associated with a 3M Account",
+    "Parameters"               : {
+        "Account" : {
+            "Type" : "String",
+            "AllowedValues" : [
+                "Production",
+                "StagingQA",
+                "LS",
+                "MaLaRD",
+                "NonPHI",
+                "DI",
+                "Sandbox"
+            ],
+            "Description"   : "Select Account, i.e. Production"
+        }
+    },
+    "Resources"                : {
+        "CloudAdmin" : {
+            "Type" : "AWS::IAM::Role",
+            "Properties" : {
+                "AssumeRolePolicyDocument" : {
+                    "Version" : "3M-HIS-2016-MAY"
+                },
+                "Path"                     : "/"
+            }
+        },
+        "NetworkAdmin" : {
+            "Type" : "AWS::IAM::Role",
+            "Properties" : {
+                "AssumeRolePolicyDocument" : {
+                    "Version" : "3M-HIS-2016-MAY"
+                },
+                "Path"                     : "/"
+            }
+        },
+        "SecurityAudit" : {
+            "Type" : "AWS::IAM::Role",
+            "Properties" : {
+                "AssumeRolePolicyDocument" : {
+                    "Version" : "3M-HIS-2016-MAY"
+                },
+                "Path"                     : "/"
+            }
+        },
+        "Developer" : {
+            "Type" : "AWS::IAM::Role",
+            "Properties" : {
+                "AssumeRolePolicyDocument" : {
+                    "Version" : "3M-HIS-2016-MAY"
+                },
+                "Path"                     : "/"
+            }
+        },
+        "PowerUser"     : {
+            "Type" : "AWS::IAM::Role",
+            "Properties" : {
+                "AssumeRolePolicyDocument" : {
+                    "Version" : "3M-HIS-2016-MAY"
+                },
+                "Path"                     : "/"
+            }
+        },
+        "DBA"           : {
+            "Type" : "AWS::IAM::Role",
+            "Properties" : {
+                "AssumeRolePolicyDocument" : {
+                    "Version" : "3M-HIS-2016-MAY"
+                },
+                "Path"                     : "/"
+            }
+        },
+        "CloudAdminPolicies" : {
+            "Type" : "AWS::IAM::Policy",
+            "Properties" : {
+                "PolicyName" : {
+                    "Fn::Join" : [
+                        "US-HIS_AWS_",
+                        "_",
+                        [
+                            {
+                                "Ref" : "Account"
+                            },
+                            "_Cloud_Admin"
+                        ]
+                    ]
+                },
+                "PolicyDocument" : {
+                    "Version" : "3M-HIS-2016-MAY",
+                    "Statement" : [
+                        {
+                            "Effect" : "Allow",
+                            "Action" : "*",
+                            "Resource" : "*"
+                        }
+                    ]
+                },
+                "Roles"          : [
+                    {
+                        "Ref" : "CloudAdmin"
+                    }
+                ]
+            }
+        },
+        "NetworkAdminPolicies" : {
+            "Type" : "AWS::IAM::Policy",
+            "Properties" : {
+                "PolicyName" : {
+                    "Fn::Join" : [
+                        "US-HIS_AWS_",
+                        "_",
+                        [
+                            {
+                                "Ref" : "Account"
+                            },
+                            "_Network_Admin"
+                        ]
+                    ]
+                },
+                "PolicyDocument" : {
+                    "Version" : "3M-HIS-2016-MAY",
+                    "Statement" : [
+                        {
+                            "Effect" : "Allow",
+                            "Action" : "*",
+                            "Resource" : "*"
+                        }
+                    ]
+                },
+                "Roles"          : [
+                    {
+                        "Ref" : "NetworkAdmin"
+                    }
+                ]
+            }
+        },
+        "SecurityAuditPolicies" : {
+            "Type" : "AWS::IAM::Policy",
+            "Properties" : {
+                "PolicyName" : {
+                    "Fn::Join" : [
+                        "US-HIS_AWS_",
+                        "_",
+                        [
+                            {
+                                "Ref" : "Account"
+                            },
+                            "_SecurityAudit"
+                        ]
+                    ]
+                },
+                "PolicyDocument" : {
+                    "Version" : "3M-HIS-2016-MAY",
+                    "Statement" : [
+                        {
+                            "Effect" : "Allow",
+                            "Action" : "*",
+                            "Resource" : "*"
+                        }
+                    ]
+                },
+                "Roles"          : [
+                    {
+                        "Ref" : "SecurityAudit"
+                    }
+                ]
+            }
+        },
+        "DeveloperPolicies" : {
+            "Type" : "AWS::IAM::Policy",
+            "Properties" : {
+                "PolicyName" : {
+                    "Fn::Join" : [
+                        "US-HIS_AWS_",
+                        "_",
+                        [
+                            {
+                                "Ref" : "Account"
+                            },
+                            "_Developer"
+                        ]
+                    ]
+                },
+                "PolicyDocument" : {
+                    "Version" : "3M-HIS-2016-MAY",
+                    "Statement" : [
+                        {
+                            "Effect" : "Allow",
+                            "Action" : "*",
+                            "Resource" : "*"
+                        }
+                    ]
+                },
+                "Roles"          : [
+                    {
+                        "Ref" : "Developer"
+                    }
+                ]
+            }
+        },
+        "PowerUserPolicies" : {
+            "Type" : "AWS::IAM::Policy",
+            "Properties" : {
+                "PolicyName" : {
+                    "Fn::Join" : [
+                        "US-HIS_AWS_",
+                        "_",
+                        [
+                            {
+                                "Ref" : "Account"
+                            },
+                            "_PowerUser"
+                        ]
+                    ]
+                },
+                "PolicyDocument" : {
+                    "Version" : "3M-HIS-2016-MAY",
+                    "Statement" : [
+                        {
+                            "Effect" : "Allow",
+                            "Action" : "*",
+                            "Resource" : "*"
+                        }
+                    ]
+                },
+                "Roles"          : [
+                    {
+                        "Ref" : "PowerUser"
+                    }
+                ]
+            }
+        },
+        "DBAPolicies" : {
+            "Type" : "AWS::IAM::Policy",
+            "Properties" : {
+                "PolicyName" : {
+                    "Fn::Join" : [
+                        "US-HIS_AWS_",
+                        "_",
+                        [
+                            {
+                                "Ref" : "Account"
+                            },
+                            "_DBA"
+                        ]
+                    ]
+                },	 
+                "PolicyDocument" : {
+                    "Version" : "3M-HIS-2016-MAY",
+                    "Statement" : [
+                        {
+                            "Effect" : "Allow",
+                            "Action" : "*",
+                            "Resource" : "*"
+                        }
+                    ]
+                },
+                "Roles"          : [
+                    {
+                        "Ref" : "DBA"
+                    }
+                ]
+            }
+        }
+    },
+    "Outputs"                  : {
+    }
+}
