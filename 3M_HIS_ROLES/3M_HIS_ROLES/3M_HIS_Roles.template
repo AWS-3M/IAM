@@ -21,7 +21,16 @@
             "Type" : "AWS::IAM::Role",
             "Properties" : {
                 "AssumeRolePolicyDocument" : {
-                    "Version" : "3M-HIS-2016-MAY"
+                    "Version" : "2012-10-17",
+                    "Statement" : [
+                        {
+                            "Effect" : "Allow",
+                            "Principal" : {
+                                "AWS" : "arn:aws:iam::646463229598:root"
+                            },
+                            "Action"    : "sts:AssumeRole"
+                        }
+                    ]
                 },
                 "Path"                     : "/"
             }
@@ -30,7 +39,16 @@
             "Type" : "AWS::IAM::Role",
             "Properties" : {
                 "AssumeRolePolicyDocument" : {
-                    "Version" : "3M-HIS-2016-MAY"
+                    "Version" : "2012-10-17",
+                    "Statement" : [
+                        {
+                            "Effect" : "Allow",
+                            "Principal" : {
+                                "AWS" : "arn:aws:iam::646463229598:root"
+                            },
+                            "Action"    : "sts:AssumeRole"
+                        }
+                    ]
                 },
                 "Path"                     : "/"
             }
@@ -39,16 +57,34 @@
             "Type" : "AWS::IAM::Role",
             "Properties" : {
                 "AssumeRolePolicyDocument" : {
-                    "Version" : "3M-HIS-2016-MAY"
+                    "Version" : "2012-10-17",
+                    "Statement" : [
+                        {
+                            "Effect" : "Allow",
+                            "Principal" : {
+                                "AWS" : "arn:aws:iam::646463229598:root"
+                            },
+                            "Action"    : "sts:AssumeRole"
+                        }
+                    ]
                 },
                 "Path"                     : "/"
             }
         },
-        "Developer" : {
+        "Developer"     : {
             "Type" : "AWS::IAM::Role",
             "Properties" : {
                 "AssumeRolePolicyDocument" : {
-                    "Version" : "3M-HIS-2016-MAY"
+                    "Version" : "2012-10-17",
+                    "Statement" : [
+                        {
+                            "Effect" : "Allow",
+                            "Principal" : {
+                                "AWS" : "arn:aws:iam::646463229598:root"
+                            },
+                            "Action"    : "sts:AssumeRole"
+                        }
+                    ]
                 },
                 "Path"                     : "/"
             }
@@ -57,7 +93,16 @@
             "Type" : "AWS::IAM::Role",
             "Properties" : {
                 "AssumeRolePolicyDocument" : {
-                    "Version" : "3M-HIS-2016-MAY"
+                    "Version" : "2012-10-17",
+                    "Statement" : [
+                        {
+                            "Effect" : "Allow",
+                            "Principal" : {
+                                "AWS" : "arn:aws:iam::646463229598:root"
+                            },
+                            "Action"    : "sts:AssumeRole"
+                        }
+                    ]
                 },
                 "Path"                     : "/"
             }
@@ -66,7 +111,16 @@
             "Type" : "AWS::IAM::Role",
             "Properties" : {
                 "AssumeRolePolicyDocument" : {
-                    "Version" : "3M-HIS-2016-MAY"
+                    "Version" : "2012-10-17",
+                    "Statement" : [
+                        {
+                            "Effect" : "Allow",
+                            "Principal" : {
+                                "AWS" : "arn:aws:iam::646463229598:root"
+                            },
+                            "Action"    : "sts:AssumeRole"
+                        }
+                    ]
                 },
                 "Path"                     : "/"
             }
@@ -76,18 +130,18 @@
             "Properties" : {
                 "PolicyName" : {
                     "Fn::Join" : [
-                        "US-HIS_AWS_",
                         "_",
                         [
+                            "US-HIS_AWS",
                             {
                                 "Ref" : "Account"
                             },
-                            "_Cloud_Admin"
+                            "Cloud_Admin"
                         ]
                     ]
                 },
                 "PolicyDocument" : {
-                    "Version" : "3M-HIS-2016-MAY",
+                    "Version" : "2012-10-17",
                     "Statement" : [
                         {
                             "Effect" : "Allow",
@@ -108,23 +162,70 @@
             "Properties" : {
                 "PolicyName" : {
                     "Fn::Join" : [
-                        "US-HIS_AWS_",
                         "_",
                         [
+                            "US-HIS_AWS",
                             {
                                 "Ref" : "Account"
                             },
-                            "_Network_Admin"
+                            "Network_Admin"
                         ]
                     ]
                 },
                 "PolicyDocument" : {
-                    "Version" : "3M-HIS-2016-MAY",
+                    "Version" : "2012-10-17",
                     "Statement" : [
                         {
+                            "Sid" : "Stmt1455138650000",
                             "Effect" : "Allow",
-                            "Action" : "*",
-                            "Resource" : "*"
+                            "Action" : [
+                                "ec2:*"
+                            ],
+                            "Resource" : [
+                                "*"
+                            ]
+                        },
+                        {
+                            "Sid" : "Stmt1455139354000",
+                            "Effect" : "Allow",
+                            "Action" : [
+                                "logs:*"
+                            ],
+                            "Resource" : [
+                                "*"
+                            ]
+                        },
+                        {
+                            "Sid" : "Stmt1455139430000",
+                            "Effect" : "Allow",
+                            "Action" : [
+                                "cloudwatch:GetMetricStatistics",
+                                "cloudwatch:ListMetrics",
+                                "cloudwatch:Describe*"
+                            ],
+                            "Resource" : [
+                                "*"
+                            ]
+                        },
+                        {
+                            "Sid" : "Stmt1456946294000",
+                            "Effect" : "Allow",
+                            "Action" : [
+                                "elasticloadbalancing:*"
+                            ],
+                            "Resource" : [
+                                "*"
+                            ]
+                        },
+                        {
+                            "Sid" : "Stmt1456946332000",
+                            "Effect" : "Allow",
+                            "Action" : [
+                                "route53:*"
+                            ],
+                            "Resource" : [
+                                "*"
+                            ]
                         }
                     ]
                 },
@@ -140,22 +241,104 @@
             "Properties" : {
                 "PolicyName" : {
                     "Fn::Join" : [
-                        "US-HIS_AWS_",
                         "_",
                         [
+                            "US-HIS_AWS",
                             {
                                 "Ref" : "Account"
                             },
-                            "_SecurityAudit"
+                            "SecurityAudit"
                         ]
                     ]
                 },
                 "PolicyDocument" : {
-                    "Version" : "3M-HIS-2016-MAY",
+                    "Version" : "2012-10-17",
                     "Statement" : [
                         {
+                            "Action" : [
+                                "autoscaling:Describe*",
+                                "cloudformation:DescribeStack*",
+                                "cloudformation:GetTemplate",
+                                "cloudformation:ListStack*",
+                                "cloudfront:Get*",
+                                "cloudfront:List*",
+                                "cloudtrail:DescribeTrails",
+                                "cloudtrail:GetTrailStatus",
+                                "cloudtrail:ListTags",
+                                "cloudwatch:Describe*",
+                                "codedeploy:Batch*",
+                                "codedeploy:Get*",
+                                "codedeploy:List*",
+                                "config:Deliver*",
+                                "config:Describe*",
+                                "config:Get*",
+                                "datapipeline:DescribeObjects",
+                                "datapipeline:DescribePipelines",
+                                "datapipeline:EvaluateExpression",
+                                "datapipeline:GetPipelineDefinition",
+                                "datapipeline:ListPipelines",
+                                "datapipeline:QueryObjects",
+                                "datapipeline:ValidatePipelineDefinition",
+                                "directconnect:Describe*",
+                                "dynamodb:ListTables",
+                                "ec2:Describe*",
+                                "ecs:Describe*",
+                                "ecs:List*",
+                                "elasticache:Describe*",
+                                "elasticbeanstalk:Describe*",
+                                "elasticloadbalancing:Describe*",
+                                "elasticmapreduce:DescribeJobFlows",
+                                "elasticmapreduce:ListClusters",
+                                "glacier:ListVaults",
+                                "iam:GenerateCredentialReport",
+                                "iam:Get*",
+                                "iam:List*",
+                                "kms:Describe*",
+                                "kms:Get*",
+                                "kms:List*",
+                                "rds:Describe*",
+                                "rds:DownloadDBLogFilePortion",
+                                "rds:ListTagsForResource",
+                                "redshift:Describe*",
+                                "route53:GetChange",
+                                "route53:GetCheckerIpRanges",
+                                "route53:GetGeoLocations",
+                                "route53:GetHealthCheck",
+                                "route53:GetHealthCheckCount",
+                                "route53:GetHealthCheckLastFailureReason",
+                                "route53:GetHostedZone",
+                                "route53:GetHostedZone",
+                                "route53:GetHostedZoneCount",
+                                "route53:GetReusableDelegationSet",
+                                "route53:ListGeoLocations",
+                                "route53:ListHealthChecks",
+                                "route53:ListHostedZones",
+                                "route53:ListHostedZones",
+                                "route53:ListHostedZonesByName",
+                                "route53:ListResourceRecordSets",
+                                "route53:ListReusableDelegationSets",
+                                "route53:ListTagsForResource",
+                                "route53:ListTagsForResources",
+                                "route53domains:GetDomainDetail",
+                                "route53domains:GetOperationDetail",
+                                "route53domains:ListDomains",
+                                "route53domains:ListOperations",
+                                "route53domains:ListTagsForDomain",
+                                "s3:GetBucket*",
+                                "s3:GetLifecycleConfiguration",
+                                "s3:GetObjectAcl",
+                                "s3:GetObjectVersionAcl",
+                                "s3:ListAllMyBuckets",
+                                "sdb:DomainMetadata",
+                                "sdb:ListDomains",
+                                "sns:GetTopicAttributes",
+                                "sns:ListTopics",
+                                "sqs:GetQueueAttributes",
+                                "sqs:ListQueues",
+                                "tag:GetResources",
+                                "tag:GetTagKeys"
+                            ],
                             "Effect" : "Allow",
-                            "Action" : "*",
                             "Resource" : "*"
                         }
                     ]
@@ -167,28 +350,184 @@
                 ]
             }
         },
-        "DeveloperPolicies" : {
+        "DeveloperPolicies"     : {
             "Type" : "AWS::IAM::Policy",
             "Properties" : {
                 "PolicyName" : {
                     "Fn::Join" : [
-                        "US-HIS_AWS_",
                         "_",
                         [
+                            "US-HIS_AWS",
                             {
                                 "Ref" : "Account"
                             },
-                            "_Developer"
+                            "Developer"
                         ]
                     ]
                 },
                 "PolicyDocument" : {
-                    "Version" : "3M-HIS-2016-MAY",
+                    "Version" : "2012-10-17",
                     "Statement" : [
                         {
+                            "Sid" : "Stmt1455201039000",
                             "Effect" : "Allow",
-                            "Action" : "*",
-                            "Resource" : "*"
+                            "Action" : [
+                                "ec2:AllocateAddress",
+                                "ec2:AssociateAddress",
+                                "ec2:AttachVolume",
+                                "ec2:ConfirmProductInstance",
+                                "ec2:CopyImage",
+                                "ec2:CopySnapshot",
+                                "ec2:CreateImage",
+                                "ec2:CreateKeyPair",
+                                "ec2:CreatePlacementGroup",
+                                "ec2:CreateTags",
+                                "ec2:CreateVolume",
+                                "ec2:DeleteKeyPair",
+                                "ec2:DeleteTags",
+                                "ec2:DeregisterImage",
+                                "ec2:DescribeAccountAttributes",
+                                "ec2:DescribeAddresses",
+                                "ec2:DescribeAvailabilityZones",
+                                "ec2:DescribeCustomerGateways",
+                                "ec2:DescribeDhcpOptions",
+                                "ec2:DescribeImageAttribute",
+                                "ec2:DescribeImages",
+                                "ec2:DescribeImportImageTasks",
+                                "ec2:DescribeImportSnapshotTasks",
+                                "ec2:DescribeInstanceAttribute",
+                                "ec2:DescribeInstanceStatus",
+                                "ec2:DescribeInstances",
+                                "ec2:DescribeInternetGateways",
+                                "ec2:DescribeKeyPairs",
+                                "ec2:DescribeLicenses",
+                                "ec2:DescribeMovingAddresses",
+                                "ec2:DescribeNatGateways",
+                                "ec2:DescribeNetworkAcls",
+                                "ec2:DescribeNetworkInterfaceAttribute",
+                                "ec2:DescribeNetworkInterfaces",
+                                "ec2:DescribePlacementGroups",
+                                "ec2:DescribePrefixLists",
+                                "ec2:DescribeRegions",
+                                "ec2:DescribeReservedInstances",
+                                "ec2:DescribeReservedInstancesListings",
+                                "ec2:DescribeReservedInstancesModifications",
+                                "ec2:DescribeReservedInstancesOfferings",
+                                "ec2:DescribeRouteTables",
+                                "ec2:DescribeSecurityGroups",
+                                "ec2:DescribeSnapshotAttribute",
+                                "ec2:DescribeSnapshots",
+                                "ec2:DescribeSpotDatafeedSubscription",
+                                "ec2:DescribeSubnets",
+                                "ec2:DescribeTags",
+                                "ec2:DescribeVolumeAttribute",
+                                "ec2:DescribeVolumeStatus",
+                                "ec2:DescribeVolumes",
+                                "ec2:DescribeVpcAttribute",
+                                "ec2:DescribeVpcClassicLink",
+                                "ec2:DescribeVpcEndpointServices",
+                                "ec2:DescribeVpcEndpoints",
+                                "ec2:DescribeVpcPeeringConnections",
+                                "ec2:DescribeVpcs",
+                                "ec2:DescribeVpnConnections",
+                                "ec2:DescribeVpnGateways",
+                                "ec2:DetachVolume",
+                                "ec2:DisassociateAddress",
+                                "ec2:GetConsoleOutput",
+                                "ec2:ImportImage",
+                                "ec2:ImportInstance",
+                                "ec2:ImportKeyPair",
+                                "ec2:ImportSnapshot",
+                                "ec2:ImportVolume",
+                                "ec2:ModifyHosts",
+                                "ec2:ModifyIdFormat",
+                                "ec2:ModifyImageAttribute",
+                                "ec2:ModifyInstanceAttribute",
+                                "ec2:ModifyInstancePlacement",
+                                "ec2:ModifySnapshotAttribute",
+                                "ec2:ModifySpotFleetRequest",
+                                "ec2:ModifySubnetAttribute",
+                                "ec2:ModifyVolumeAttribute",
+                                "ec2:MonitorInstances",
+                                "ec2:RebootInstances",
+                                "ec2:RegisterImage",
+                                "ec2:ReleaseAddress",
+                                "ec2:ReleaseHosts",
+                                "ec2:ResetImageAttribute",
+                                "ec2:ResetInstanceAttribute",
+                                "ec2:ResetSnapshotAttribute",
+                                "ec2:RunInstances",
+                                "ec2:StartInstances",
+                                "ec2:StopInstances",
+                                "ec2:TerminateInstances",
+                                "ec2:UnassignPrivateIpAddresses",
+                                "ec2:UnmonitorInstances"
+                            ],
+                            "Resource" : [
+                                "*"
+                            ]
+                        },
+                        {
+                            "Sid" : "Stmt1455201409000",
+                            "Effect" : "Allow",
+                            "Action" : [
+                                "s3:AbortMultipartUpload",
+                                "s3:DeleteBucketPolicy",
+                                "s3:DeleteBucketWebsite",
+                                "s3:DeleteObject",
+                                "s3:DeleteObjectVersion",
+                                "s3:GetBucketAcl",
+                                "s3:GetBucketCORS",
+                                "s3:GetBucketLocation",
+                                "s3:GetBucketLogging",
+                                "s3:GetBucketNotification",
+                                "s3:GetBucketPolicy",
+                                "s3:GetBucketTagging",
+                                "s3:GetBucketVersioning",
+                                "s3:GetBucketWebsite",
+                                "s3:GetLifecycleConfiguration",
+                                "s3:GetObject",
+                                "s3:GetObjectAcl",
+                                "s3:GetObjectVersion",
+                                "s3:GetObjectVersionAcl",
+                                "s3:GetObjectVersionTorrent",
+                                "s3:ListAllMyBuckets",
+                                "s3:ListBucket",
+                                "s3:ListBucketMultipartUploads",
+                                "s3:ListBucketVersions",
+                                "s3:ListMultipartUploadParts",
+                                "s3:PutObject",
+                                "s3:RestoreObject"
+                            ],
+                            "Resource" : [
+                                "*"
+                            ]
+                        },
+                        {
+                            "Sid" : "Stmt1455201500000",
+                            "Effect" : "Allow",
+                            "Action" : [
+                                "elasticloadbalancing:DeleteLoadBalancer",
+                                "elasticloadbalancing:DescribeInstanceHealth",
+                                "elasticloadbalancing:DescribeLoadBalancerAttributes",
+                                "elasticloadbalancing:DescribeLoadBalancers",
+                                "elasticloadbalancing:DescribeTags",
+                                "elasticloadbalancing:EnableAvailabilityZonesForLoadBalancer"
+                            ],
+                            "Resource" : [
+                                "*"
+                            ]
+                        },
+                        {
+                            "Sid" : "Stmt1455201569000",
+                            "Effect" : "Allow",
+                            "Action" : [
+                                "cloudwatch:GetMetricStatistics",
+                                "cloudwatch:ListMetrics"
+                            ],
+                            "Resource" : [
+                                "*"
+                            ]
                         }
                     ]
                 },
@@ -199,28 +538,28 @@
                 ]
             }
         },
-        "PowerUserPolicies" : {
+        "PowerUserPolicies"     : {
             "Type" : "AWS::IAM::Policy",
             "Properties" : {
                 "PolicyName" : {
                     "Fn::Join" : [
-                        "US-HIS_AWS_",
                         "_",
                         [
+                            "US-HIS_AWS",
                             {
                                 "Ref" : "Account"
                             },
-                            "_PowerUser"
+                            "PowerUser"
                         ]
                     ]
                 },
                 "PolicyDocument" : {
-                    "Version" : "3M-HIS-2016-MAY",
+                    "Version" : "2012-10-17",
                     "Statement" : [
                         {
                             "Effect" : "Allow",
-                            "Action" : "*",
-                            "Resource" : "*"
+                            "NotAction" : "iam:*",
+                            "Resource"  : "*"
                         }
                     ]
                 },
@@ -231,23 +570,23 @@
                 ]
             }
         },
-        "DBAPolicies" : {
+        "DBAPolicies"           : {
             "Type" : "AWS::IAM::Policy",
             "Properties" : {
                 "PolicyName" : {
                     "Fn::Join" : [
-                        "US-HIS_AWS_",
                         "_",
                         [
+                            "US-HIS_AWS",
                             {
                                 "Ref" : "Account"
                             },
-                            "_DBA"
+                            "DBA"
                         ]
                     ]
-                },	 
+                },
                 "PolicyDocument" : {
-                    "Version" : "3M-HIS-2016-MAY",
+                    "Version" : "2012-10-17",
                     "Statement" : [
                         {
                             "Effect" : "Allow",
